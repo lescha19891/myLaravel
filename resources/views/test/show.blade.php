@@ -1,4 +1,6 @@
-@extends('.layouts.app')
+@extends('layouts.app')
+
+@section('title-block') myShow @endsection
 
 @section('title')<h1>{{$surname}}</h1> @endsection
 

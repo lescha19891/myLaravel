@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome');});
+Route::get('/about/', function () { return view('about');});
+Route::get('/contact/', function () { return view('contact');});
+
+
 Route::get('/test/show', 'App\Http\Controllers\TestController@show')->name('test');
 Route::get('/test/showOne/{id}', 'App\Http\Controllers\TestController@showOne');
 Route::get('/test/showField/{id}/{val}', 'App\Http\Controllers\TestController@showField');
