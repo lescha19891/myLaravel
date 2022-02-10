@@ -13,9 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('welcome');});
-Route::get('/about/', function () { return view('about');});
-Route::get('/contact/', function () { return view('contact');});
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+Route::get('/about/', function () {
+    return view('about');
+})->name('about');
+Route::get('/contact/', function () {
+    return view('contact');
+})->name('contact');
+Route::get('/login/', function () {
+    return view('login');
+})->name('login');
+Route::get('/register/', function () {
+    return view('register');
+})->name('register');
+Route::post('/login/', 'App\Http\Controllers\RegisterController@login')->name('login');
+Route::post('/register/', 'App\Http\Controllers\RegisterController@register')->name('register');
+
+Route::post('/contact/submit', 'App\Http\Controllers\ContactController@submit')->name('contact-form');
+Route::get('/contact/all', 'App\Http\Controllers\ContactController@allData')->name('all-data');
+Route::get('/contact/all/{id}', 'App\Http\Controllers\ContactController@oneData')->name('one-data');
+Route::get('/contact/all/{id}/update', 'App\Http\Controllers\ContactController@update')->name('contact-update');
+Route::post('/contact/all/{id}/update', 'App\Http\Controllers\ContactController@updateSubmit')->name('contact-form-update');
+Route::get('/contact/all/{id}/delete', 'App\Http\Controllers\ContactController@deleteSubmit')->name('contact-delete');
+
+
+
+
 
 
 Route::get('/test/show', 'App\Http\Controllers\TestController@show')->name('test');
@@ -29,9 +54,9 @@ Route::get('/test/', function () {
 Route::get('/dir/test/', function () {
     return '!';
 });
-Route::get('/user/{id}/{name}/', function($id, $name) {
+Route::get('/user/{id}/{name}/', function ($id, $name) {
     return "ИД: $id Имя: $name";
-})->where(['id'=>'[0-9]+','name'=>'[a-z]{2,}']);
+})->where(['id' => '[0-9]+', 'name' => '[a-z]{2,}']);
 //Route::get('/user/{id}/', function($id) {
 //    return 'gfjgjgfj';
 //});

@@ -13,11 +13,12 @@
 @if(Request::is('/'))
     @include('inc.news')
 @endif
+@include('inc.messages')
 <div class="row">
-    <div class="col-4">
+    <div class="col-3">
         @include('inc.aside')
     </div>
-    <div class="col-8">
+    <div class="col-9">
         @yield('body')
     </div>
 </div>
@@ -25,4 +26,3 @@
 @include('inc.footer')
 </body>
 </html>
-{{--route('test')--}}
